@@ -1,6 +1,6 @@
 <template>
     <NewPage>
-        <div class="bg-[pink] colorNow flex flex-col h-[100%] p-1">
+        <div class="bg-[pink] colorNow flex flex-col h-[100%] p-1]">
             <div class="flex flex-grow">
                 <div class="flex-none border-r-2 p-1 border-[black]">
                     <div v-for="(a, i) in linkLabel" :class="isActive === i ? 'border-l-[.4rem] border-[black]' : ''"
@@ -9,14 +9,20 @@
                     </div>
 
                 </div>
-                <div class="flex-1 p-1" v-if="index !== 9">
-                    {{ message }}
-                </div>
-                <transition name="zoom-fade" appear>
-                    <SportBetting v-if="index === 9" />
+                <div class="relative w-[100%]">
+                    <div class="flex-1 p-1 border-2 border-[red] absolute top-0" v-if="index !== 9">
+                        {{ message }}
 
-                </transition>
-                 <!-- <component :is="componentIndex === 9 ? <SportBetting/> : '' "></component> -->
+                    </div>
+                    <div class="">
+                        <transition name="zoom-fade" appear>
+                            <SportBetting v-if="index === 9" />
+
+                        </transition>
+                    </div>
+                </div>
+
+                <!-- <component :is="componentIndex === 9 ? <SportBetting/> : '' "></component> -->
 
             </div>
         </div>
@@ -32,7 +38,7 @@ import { useStore } from '../store/store';
 const SportBetting = defineAsyncComponent(() => import('./sportBetting/SportBetting.vue'))
 const store = useStore()
 const index = ref()
-// const componentIndex = ref()
+const componentIndex = ref()
 
 
 const linkLabel = ref([
@@ -53,7 +59,7 @@ const showMessage = (msg, i) => {
     isActive.value = i;
     store.commit('setstateTabIndexing', i)
     index.value = i;
-    componentIndex = i;
+    componentIndex.value = i;
 }
 const isActive = ref(store.state.tabIndexing.tabIndex)
 

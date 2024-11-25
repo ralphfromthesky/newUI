@@ -1,11 +1,11 @@
 <template>
     <div>
         <div class="text-center mt-[3rem]">
-            <div class="border-b-2 border-t-2 border-[gray] p-2 m-2">
+            <div :class="[props.tabTitle ? 'border-b-2 border-t-2 border-[gray]' : '', 'p-2 m-2']">
                 {{ props.tabTitle }}
             </div>
 
-            <div>
+            <div >
                 {{ props.message }}
 
             </div>
@@ -20,7 +20,7 @@ const props = defineProps({
     message: {
         type: String,
         required: true,
-        default: 'tae default'
+        default: ''
     },
     tabTitle: {
         type: String,

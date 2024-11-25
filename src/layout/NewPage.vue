@@ -4,9 +4,12 @@
             <NewHeader />
         </div>
         <div class="h-[95vh]">
-            <transition name="zoom-fade" appear>
-                <slot>no data</slot>
-            </transition>
+            <!-- <transition name="zoom-fade" appear>
+        
+
+            </transition> -->
+            <slot>no data</slot>
+
 
         </div>
         <div>
